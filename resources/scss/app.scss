@@ -1,0 +1,26 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+
+// Variables
+@import 'variables';
+
+
+
+//verholy relax park desighn form
+
+@import 'custom.scss';
+
+
+
+//Login
+@import  'login.scss';
+
+
+//about page 
+@import 'about.scss';
+
+
