@@ -15,46 +15,45 @@ class UserPolicy
   
     use HandlesAuthorization;
 
-    
+   /* 
     public function viewAny(User $user)   // is used to completely hide resources from the navigation menu, and prevents the user from accessing any pages.
     {
         return !$user->hasRole(['admin','writer','user','su']);
         
 
     }
+
+    /// having issue with admin user
     
-   
+   */
     
     public function create(User $user)     
     {
     
-       return !$user->hasRole(['admin','writer','user','su']);
+       return $user->hasRole(['writer','user','su']) ;
        
     }
     public function update (User $user)   
     {
-        return !$user->hasRole(['admin','writer']);
+        return $user->hasRole(['writer']);
        
 
     }
     public function view(User $user)  
     {
        // return $user->hasRole(['admin','writer','user','su']);
-       return !$user->hasRole(['admin','writer']);
+       return $user->hasRole(['admin','writer']);
 
 
     }
     public function delete(User $user)        
     {
-        return !$user->hasRole(['admin','writer']);
+        return $user->hasRole(['writer','user']);
        //return $user->hasAnyRole('admin');
 
     }
    
    }
-
-
-
 
 
 
