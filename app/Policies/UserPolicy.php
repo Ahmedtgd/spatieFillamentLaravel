@@ -30,32 +30,49 @@ class UserPolicy
     public function create(User $user)     
     {
     
-       return $user->hasRole(['writer','user','su']) ;
-       
+      // return $user->hasRole(['writer','user','su']) ;
+
+         if ($user->hasPermissionTo('create User')){
+            return true;
+        }
+        return false;
     }
+       
+    
     public function update (User $user)   
     {
-        return $user->hasRole(['writer']);
+        //return $user->hasRole(['admin','writer']);
+         if ($user->hasPermissionTo('update User')){
+            return true;
+        }
+        return false;
+    }
        
 
-    }
+   
     public function view(User $user)  
     {
        // return $user->hasRole(['admin','writer','user','su']);
-       return $user->hasRole(['admin','writer']);
-
-
+      // return $user->hasRole(['admin','writer']);
+         if ($user->hasPermissionTo('view User')){
+            return true;
+        }
+        return false;
     }
+
+
+ 
     public function delete(User $user)        
     {
-        return $user->hasRole(['writer','user']);
+       // return $user->hasRole(['writer','user']);
        //return $user->hasAnyRole('admin');
-
+        if ($user->hasPermissionTo('delete User')){
+            return true;
+        }
+        return false;
     }
    
    }
-
-
 
 
 
